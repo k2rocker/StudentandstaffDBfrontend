@@ -1,20 +1,52 @@
-<h2>Student List</h2>
+<h2>{{studentclassval}}</h2>
+<div>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name" class="form-control mb-3" id="searchTerm"/>
+    <button (click)="filteredStudents()" class="btn btn-info">Search</button>
+</div>
+<div>
+    <button (click)="addStudents()" class="btn btn-info">ADD STUDENT</button>
+</div>
+
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Student Class</th>
+                <th>Phone Number</th>
+                <th>Book Fee Paid</th>
+                <th>Total Tuition Fee Paid</th>
+                <th>Discount</th>
+                <th>Total Tuition Fee Remaining</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students">
+                <td>{{student.studentname}}</td>
+                <td>{{student.studentclass}}</td>
+                <td>{{student.phoneNumber}}</td>
+                <td>{{student.bookfees}}</td>
+                <td>{{student.feepaid}}</td>
+                <td>{{student.discount}}</td>
+                <td>{{(40000-student.feepaid-student.discount)>=0?40000-student.feepaid-student.discount:0}}</td>
+                <td>{{student.status}}</td>
+                <td>
+                    <button (click)="updateStudent(student.id)" class="btn btn-info">Update</button>
+                    <button (click)="deleteStudent(student.id)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Total Fee Paid</th>
-            <th>Status</th>
-        </tr>
-    </thead>
     <tbody>
-        <tr *ngFor="let student of students">
-            <td>{{student.firstname}}</td>
-            <td>{{student.lastname}}</td>
-            <td>{{student.feepaid}}</td>
-            <td>{{student.status}}</td>
+        <tr>
+            <td></td>
+            <td>TOTAL FEE COLLECTED</td>
+            <td>{{totalFee}}</td>
         </tr>
     </tbody>
-
 </table>

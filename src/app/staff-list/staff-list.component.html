@@ -1,0 +1,45 @@
+<h2>STAFF LIST</h2>
+<div>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name" class="form-control mb-3" id="searchTerm"/>
+    <button (click)="filteredStaffs()" class="btn btn-info">Search</button>
+</div>
+<div>
+    <button (click)="addStaffs()" class="btn btn-info">ADD STAFF</button>
+</div>
+
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Staff Name</th>
+                <th>Position Type</th>
+                <th>Phone Number</th>
+                <th>Salary</th>
+                <th>Month</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let staff of staff">
+                <td>{{staff.staffname}}</td>
+                <td>{{staff.positiontype}}</td>
+                <td>{{staff.phoneNumber}}</td>
+                <td>{{staff.salary}}</td>
+                <td>{{staff.month}}</td>
+                <td>
+                    <button (click)="updateStaff(staff.id)" class="btn btn-info">Update</button>
+                    <button (click)="deleteStaff(staff.id)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- 
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <td></td>
+            <td>TOTAL FEE COLLECTED</td>
+            <td>{{totalFee}}</td>
+        </tr>
+    </tbody>
+</table> -->
